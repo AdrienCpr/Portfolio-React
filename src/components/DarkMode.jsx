@@ -1,11 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {DarkModeSwitch} from "react-toggle-dark-mode";
 
-const DarkMode = () => {
-    const [darkMode, setDarkMode] = useState(() => {
-        const storedDarkMode = localStorage.getItem('darkMode');
-        return storedDarkMode ? JSON.parse(storedDarkMode) : false;
-    });
+const DarkMode = ({darkMode, setDarkMode}) => {
     const toggleDarkMode = () => {
         setDarkMode((prevMode) => {
             const newMode = !prevMode;

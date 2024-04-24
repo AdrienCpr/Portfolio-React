@@ -4,9 +4,30 @@ import {Link as ScrollLink} from 'react-scroll';
 import DarkMode from "../components/DarkMode";
 import DropDownLanguage from "../components/DropDownLanguage";
 
-const Header = () => {
+const Header = ({language, setLanguage}) => {
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [darkMode, setDarkMode] = useState(() => {
+        const storedDarkMode = localStorage.getItem('darkMode');
+        return storedDarkMode ? JSON.parse(storedDarkMode) : false;
+    });
+
+    const params = {
+        colors :
+            {
+                darkNavBar: [6, 70, 99],
+                lightNavBar: [143, 144, 146]
+            },
+        fr :
+            {
+                about: "About",
+            }
+        ,
+        en :
+            {
+                about: "À propos",
+            }
+    }
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
@@ -25,11 +46,21 @@ const Header = () => {
 
     const headerTransparency = Math.min(scrollPosition / 500, 1);
 
+    function rgbToString(rgb) {
+        return rgb.join(',');
+    }
+
+    let backgroundColor = darkMode
+        ? `rgba(${rgbToString(params.colors.darkNavBar)}, ${headerTransparency})`
+        : `rgba(${rgbToString(params.colors.lightNavBar)}, ${headerTransparency})`;
+
+    let languageSelected = params[language]
+    console.log(languageSelected, language)
     return (
-        <header className="px-4 lg:px-6 h-16 flex items-center sticky top-0
+        <header className={`px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50
             bg-lightSecondary
-            dark:bg-darkSecondary"
-            style={{ backgroundColor: `rgba(161, 164, 174, ${headerTransparency})` }}
+            dark:bg-darkSecondary`}
+            style={{ backgroundColor }}
         >
 
             {/* Menu Mobile */}
@@ -50,7 +81,7 @@ const Header = () => {
                     </button>
                 </div>
                 <div>
-                    <DropDownLanguage />
+                    <DropDownLanguage language={language} setLanguage={setLanguage} />
                 </div>
 
                 <div className="flex flex-col gap-4 mt-12">
@@ -59,7 +90,7 @@ const Header = () => {
                         cursor-pointer
                         text-lightQuaternary
                         dark:text-darkQuaternary">
-                        À propos
+                        {languageSelected.about}
                     </ScrollLink>
 
                     <ScrollLink to="skills" smooth={true} duration={500} spy={true} exact="true" offset={-70}
@@ -93,7 +124,7 @@ const Header = () => {
                 </div>
 
                 <div className={`fixed bottom-4 z-50 ${isMenuOpen ? 'lg:hidden' : ''}`}>
-                    <DarkMode />
+                    <DarkMode darkMode={darkMode} setDarkMode={setDarkMode}/>
                 </div>
             </nav>
 
@@ -104,7 +135,7 @@ const Header = () => {
                                 cursor-pointer
                                 text-lightQuaternary
                                 dark:text-darkQuaternary">
-                    À propos
+                    {languageSelected.about}
                 </ScrollLink>
 
                 <ScrollLink to="skills" smooth={true} duration={500} spy={true} exact="true" offset={-70}
@@ -135,8 +166,9 @@ const Header = () => {
                     Contact
                 </ScrollLink>
 
-                <DarkMode />
-                <DropDownLanguage />
+                <DarkMode darkMode={darkMode} setDarkMode={setDarkMode}/>
+
+                <DropDownLanguage language={language} setLanguage={setLanguage} />
             </nav>
 
         </header>

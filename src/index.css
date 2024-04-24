@@ -1,3 +1,74 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --color-dark-primary: #1a202c;
+    --color-dark-secondary: #2d3748;
+    --color-dark-tertiary: #064663;
+    --color-dark-quaternary: #ecb365;
+    --color-light-primary: #ffffff;
+    --color-light-secondary: #F3F4F6;
+    --color-light-tertiary: #6B7280;
+    --color-light-quaternary: #000000;
+}
+
+body {
+    background-color: var(--color-light-primary);
+}
+
+body.dark {
+    background-color: var(--color-dark-primary);
+}
+
+.project-item {
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-item:hover {
+    transform: scale(1.1);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-tertiary);
+    border-radius: 12px;
+    border: 3px solid var(--color-light-secondary);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-light-secondary);
+}
+
+html.light-theme ::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-tertiary);
+    border: 3px solid var(--color-light-secondary);
+}
+
+html.light-theme ::-webkit-scrollbar-track {
+    background-color: var(--color-light-secondary);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-quaternary);
+    border: 3px solid var(--color-dark-secondary);
+}
+
+html.dark ::-webkit-scrollbar-track {
+    background-color: var(--color-dark-secondary);
+}
+
+.slick-prev:before, .slick-next:before {
+    color: var(--color-dark-secondary) !important;
+}
+
+.dark .slick-prev:before, .dark .slick-next:before {
+    color: var(--color-dark-quaternary) !important;
+}
+
+.gJAGSz.active {
+    background: transparent !important;
+}

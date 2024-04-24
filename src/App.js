@@ -5,14 +5,31 @@ import Timeline from "./sections/Timeline";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
+import {useEffect, useState} from "react";
 
 function App() {
-  return (
+    const [language, setLanguage] = useState(() => {
+        const storedLanguage = localStorage.getItem('language');
+        return storedLanguage ? storedLanguage : "fr";
+    });
+
+
+    useEffect(() => {
+        fetch('http://localhost:3021/colors')
+            .then(response => response.json())
+            .then(data => {
+                for (const color in data) {
+                    document.documentElement.style.setProperty(`--color-${color}`, data[color]);
+                }
+            });
+    }, []);
+
+    return (
       <div className={`flex flex-col min-h-screen
                         bg-lightPrimary
                         dark:bg-darkPrimary
                         transition-all duration-500`}>
-        <Header/>
+        <Header language={language} setLanguage={setLanguage}/>
 
         <main className="flex-1 mx-auto overflow-hidden">
           <section id="about" className="w-full py-10">

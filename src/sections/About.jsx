@@ -16,7 +16,7 @@ const About = () => {
                         </p>
                     </div>
                     <img
-                        alt="Photo d'Adrien Compare"
+                        alt="Adrien Compare"
                         className="rounded-full object-cover object-center"
                         src="/adrien.jpg"
                         loading="lazy"

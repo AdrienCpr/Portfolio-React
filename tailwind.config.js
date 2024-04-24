@@ -5,14 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkPrimary: '#1a202c',
-        darkSecondary: '#2d3748',
-        darkTertiary: "#064663",
-        darkQuaternary: "#ECB365",
-        lightPrimary: '#ffffff',
-        lightSecondary: '#F3F4F6',
-        lightTertiary: "#6B7280",
-        lightQuaternary: "#000000"
+        darkPrimary: 'var(--color-dark-primary)',
+        darkSecondary: 'var(--color-dark-secondary)',
+        darkTertiary: 'var(--color-dark-tertiary)',
+        darkQuaternary: 'var(--color-dark-quaternary)',
+        lightPrimary: 'var(--color-light-primary)',
+        lightSecondary: 'var(--color-light-secondary)',
+        lightTertiary: 'var(--color-light-tertiary)',
+        lightQuaternary: 'var(--color-light-quaternary)',
       },
     },
   },

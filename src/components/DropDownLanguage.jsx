@@ -1,12 +1,11 @@
-import React, {useState, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import {Menu, Transition} from '@headlessui/react';
 import { FR, GB } from 'country-flag-icons/react/3x2'
 
-const Header = () => {
-    const [language, setLanguage] = useState('fr');
-
+const Header = ({setLanguage, language}) => {
     const handleLanguageChange = (value) => {
         setLanguage(value);
+        localStorage.setItem("language",value)
     };
 
     return (
