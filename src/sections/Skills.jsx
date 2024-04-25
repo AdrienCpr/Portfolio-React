@@ -1,19 +1,100 @@
 import React from 'react';
+import { FaLaravel } from "react-icons/fa";
+import { SiLivewire } from "react-icons/si";
+import { FaPhp } from "react-icons/fa";
 
-const Skills = () => {
+import { RiRemixRunFill } from "react-icons/ri";
+import { FaReact } from "react-icons/fa";
+import { FaNodeJs } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
 
-    const skills = [
+import { SiTailwindcss } from "react-icons/si";
+import { DiPostgresql } from "react-icons/di";
+import { SiUnrealengine } from "react-icons/si";
+import { SiGodotengine } from "react-icons/si";
+
+const Skills = ({language}) => {
+
+    const params = {
+        "fr": {
+            mainSkills: "Compétences principales",
+            secondarySkills: "Compétences secondaires",
+        },
+        "en": {
+            mainSkills: "Main Skills",
+            secondarySkills: "Secondary Skills",
+        },
+        "skills": [
             {
-                "name": "JavaScript",
-                "icon" : "developer.png",
+                "name": "Laravel",
+                "icon": <FaLaravel
+                    className={"h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
                 "primary": true
             },
             {
-                "name": "Python",
-                "icon" : "developer.png",
+                "name": "Livewire",
+                "icon": <SiLivewire
+                    className={"h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": true
+            },
+            {
+                "name": "Php",
+                "icon": <FaPhp
+                    className={"h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": true
+            },
+            {
+                "name": "Remix",
+                "icon": <RiRemixRunFill
+                    className={"h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": true
+            },
+            {
+                "name": "React",
+                "icon": <FaReact
+                    className={"h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": true
+            },
+            {
+                "name": "NodeJs",
+                "icon": <FaNodeJs
+                    className={"h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": true
+            },
+            {
+                "name": "JavaScript",
+                "icon": <IoLogoJavascript
+                    className={"h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": true
+            },
+            {
+                "name": "Tailwind",
+                "icon": <SiTailwindcss
+                    className={"h-10 w-10 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
                 "primary": false
+            },
+            {
+                "name": "Postgres",
+                "icon": <DiPostgresql
+                    className={"h-10 w-10 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": false
+            },
+            {
+                "name": "UE5",
+                "icon": <SiUnrealengine
+                    className={"h-10 w-10 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": false
+            },
+            {
+                "name": "Godot",
+                "icon": <SiGodotengine
+                    className={"h-10 w-10 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125"}/>,
+                "primary": false
+
             }
         ]
+    }
+
 
 
     return (
@@ -22,16 +103,12 @@ const Skills = () => {
                 <div className="space-y-2">
                     <h2 className={`text-3xl font-bold tracking-tighter sm:text-5xl mb-8
                                 text-lightQuaternary
-                                dark:text-darkQuaternary`}>Compétences principales</h2>
+                                dark:text-darkQuaternary`}>{params[language].mainSkills}</h2>
                     <div className="flex flex-wrap justify-center gap-4">
-                        {skills.map((skill, index) => (
+                        {params["skills"].map((skill, index) => (
                             (skill.primary) ?
                                 <div key={index} className="group flex flex-col items-center">
-                                    <img
-                                        alt={`icon ${skill.name}`}
-                                        className="h-12 w-12 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125 "
-                                        src={"/" + skill.icon}
-                                    />
+                                    {skill.icon}
                                     <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity
                                               text-lightQuaternary
                                               dark:text-darkQuaternary"
@@ -45,20 +122,16 @@ const Skills = () => {
                     <div className="space-y-2">
                         <h3 className={`text-xl font-bold tracking-tighter sm:text-3xl mb-8
                             text-lightQuaternary
-                            dark:text-darkQuaternary`}>Compétences secondaires</h3>
+                            dark:text-darkQuaternary`}>{params[language].secondarySkills}</h3>
                         <div className="flex flex-wrap justify-center gap-4">
 
-                            {skills.map((skill, index) => (
+                            {params["skills"].map((skill, index) => (
                                 !skill.primary ?
                                     <div key={index} className="group flex flex-col items-center">
-                                        <img
-                                            alt={`icon ${skill.name}`}
-                                            className="h-8 w-8 dark:text-gray-400 mb-4 transition-transform transform group-hover:scale-125 "
-                                            src={`/${skill.icon}`}
-                                        />
-                                        <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity
-                                      text-lightQuaternary
-                                      dark:text-darkQuaternary"
+                                        {skill.icon}
+                                        <p className="text-xs opacity-0 group-hover:opacity-100 transition-opacity
+                                          text-lightQuaternary
+                                          dark:text-darkQuaternary"
                                         >
                                             {skill.name}
                                         </p>

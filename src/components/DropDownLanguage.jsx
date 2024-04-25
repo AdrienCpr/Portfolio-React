@@ -4,8 +4,8 @@ import { FR, GB } from 'country-flag-icons/react/3x2'
 
 const Header = ({setLanguage, language}) => {
     const handleLanguageChange = (value) => {
-        setLanguage(value);
         localStorage.setItem("language",value)
+        setLanguage(value);
     };
 
     return (

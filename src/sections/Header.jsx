@@ -4,13 +4,9 @@ import {Link as ScrollLink} from 'react-scroll';
 import DarkMode from "../components/DarkMode";
 import DropDownLanguage from "../components/DropDownLanguage";
 
-const Header = ({language, setLanguage}) => {
+const Header = ({language, setLanguage, darkMode, setDarkMode}) => {
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
-    const [darkMode, setDarkMode] = useState(() => {
-        const storedDarkMode = localStorage.getItem('darkMode');
-        return storedDarkMode ? JSON.parse(storedDarkMode) : false;
-    });
 
     const params = {
         colors :
@@ -18,15 +14,20 @@ const Header = ({language, setLanguage}) => {
                 darkNavBar: [6, 70, 99],
                 lightNavBar: [143, 144, 146]
             },
-        fr :
-            {
-                about: "About",
-            }
-        ,
-        en :
-            {
-                about: "À propos",
-            }
+        fr: {
+            about: "À propos",
+            skills: "Compétences",
+            timeline: "Chronologie",
+            projects: "Projets",
+            contact: "Contact",
+        },
+        en: {
+            about: "About",
+            skills: "Skills",
+            timeline: "Timeline",
+            projects: "Projects",
+            contact: "Contact",
+        },
     }
 
     const toggleMenu = () => {
@@ -54,8 +55,6 @@ const Header = ({language, setLanguage}) => {
         ? `rgba(${rgbToString(params.colors.darkNavBar)}, ${headerTransparency})`
         : `rgba(${rgbToString(params.colors.lightNavBar)}, ${headerTransparency})`;
 
-    let languageSelected = params[language]
-    console.log(languageSelected, language)
     return (
         <header className={`px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50
             bg-lightSecondary
@@ -90,21 +89,21 @@ const Header = ({language, setLanguage}) => {
                         cursor-pointer
                         text-lightQuaternary
                         dark:text-darkQuaternary">
-                        {languageSelected.about}
+                        {params[language].about}
                     </ScrollLink>
 
                     <ScrollLink to="skills" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                                 className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                         text-lightQuaternary
                         dark:text-darkQuaternary">
-                        Compétences
+                        {params[language].skills}
                     </ScrollLink>
 
                     <ScrollLink to="timeline" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                                 className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                         text-lightQuaternary
                         dark:text-darkQuaternary">
-                        Timeline
+                        {params[language].timeline}
                     </ScrollLink>
 
 
@@ -112,14 +111,14 @@ const Header = ({language, setLanguage}) => {
                                 className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                         dark:text-darkQuaternary
                         text-lightQuaternary">
-                        Projets
+                        {params[language].projects}
                     </ScrollLink>
 
                     <ScrollLink to="contact" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                                 className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                         dark:text-darkQuaternary
                         text-lightQuaternary">
-                        Contact
+                        {params[language].contact}
                     </ScrollLink>
                 </div>
 
@@ -135,35 +134,35 @@ const Header = ({language, setLanguage}) => {
                                 cursor-pointer
                                 text-lightQuaternary
                                 dark:text-darkQuaternary">
-                    {languageSelected.about}
+                    {params[language].about}
                 </ScrollLink>
 
                 <ScrollLink to="skills" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                             className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                                 text-lightQuaternary
                                 dark:text-darkQuaternary">
-                    Compétences
+                    {params[language].skills}
                 </ScrollLink>
 
                 <ScrollLink to="timeline" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                             className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                                 text-lightQuaternary
                                 dark:text-darkQuaternary">
-                    Timeline
+                    {params[language].timeline}
                 </ScrollLink>
 
                 <ScrollLink to="projects" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                             className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                                 dark:text-darkQuaternary
                                 text-lightQuaternary">
-                    Projets
+                    {params[language].projects}
                 </ScrollLink>
 
                 <ScrollLink to="contact" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                             className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer
                                 dark:text-darkQuaternary
                                 text-lightQuaternary">
-                    Contact
+                    {params[language].contact}
                 </ScrollLink>
 
                 <DarkMode darkMode={darkMode} setDarkMode={setDarkMode}/>

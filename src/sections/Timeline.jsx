@@ -1,52 +1,140 @@
 import React from 'react';
 import {Chrono} from "react-chrono";
 
-const Timeline = () => {
+const Timeline = ({darkMode, language}) => {
 
-    const items = [
-        {
-            id: 0,
-            title: "May 1940",
-            cardTitle: "Dunkirk",
-            url: "http://www.history.com",
-            cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to..",
-            cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-            media: {
-                type: "IMAGE",
-                source: {
-                    url: "https://cdn.futura-sciences.com/cdn-cgi/image/width=1024,quality=50,format=auto/sources/images/dossier/773/01-intro-773.jpg"
+    const params = {
+        "fr": {
+            "timeline": "Chronologie",
+            "items": [
+                {
+                    "id": 0,
+                    "title": "Juillet 2020",
+                    "cardTitle": "Baccalauréat Scientifique",
+                    "url": "http://www.stlouis-orange.fr/",
+                    "cardSubtitle": "Obtention de mon baccalauréat scientifique avec mention AB",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://cdn-s-www.ledauphine.com/images/CD36051C-762C-42A9-8080-933482A04B2E/NW_raw/le-lycee-saint-louis-a-orange-affiche-un-taux-de-reussite-pour-le-bac-2018-de-99-archives-photo-le-dl-1553033229.jpg"
+                        }
+                    }
+                },
+                {
+                    "id": 1,
+                    "title": "2022",
+                    "cardTitle": "DUT Informatique",
+                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "cardSubtitle": "Obtention de mon DUT Informatique sur le site d'Arles",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MyADu1DS_AGyYwQVjRVDRAw4tGtDKemnTF1F_UGJCw&s"
+                        }
+                    }
+                },
+                {
+                    "id": 2,
+                    "title": "2022-2023",
+                    "cardTitle": "Concepteur et développeur d'applications",
+                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "cardSubtitle": "Obtention de mon titre de Concepteur et développeur d'applications en alternance (ESIMED|GLANUM)",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://cfa-insta.fr/wp-content/uploads/2021/01/3-Devops-desktop-2021-V1.jpg"
+                        }
+                    }
+                },
+                {
+                    "id": 3,
+                    "title": "2023-2025",
+                    "cardTitle": "Expert en développement logiciel",
+                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "cardSubtitle": "Formation d'Expert en développement logiciel en alternance (ESIMED|GLANUM)",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://guardia.school/wp-content/webp-express/webp-images/uploads/2023/03/19-5.jpg.webp"
+                        }
+                    }
                 }
-            }
+            ]
         },
-        {
-            id: 1,
-            title: "May 1941",
-            cardTitle: "Dunkirk",
-            url: "http://www.history.com",
-            cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to..",
-            cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-            media: {
-                type: "IMAGE",
-                source: {
-                    url: "https://cdn.futura-sciences.com/cdn-cgi/image/width=1024,quality=50,format=auto/sources/images/dossier/773/01-intro-773.jpg"
+        "en": {
+            "timeline": "Timeline",
+            "items": [
+                {
+                    "id": 0,
+                    "title": "July 2020",
+                    "cardTitle": "Scientific Baccalauréat",
+                    "url": "http://www.stlouis-orange.fr/",
+                    "cardSubtitle": "Obtained my scientific baccalauréat with honors (AB)",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://cdn-s-www.ledauphine.com/images/CD36051C-762C-42A9-8080-933482A04B2E/NW_raw/le-lycee-saint-louis-a-orange-affiche-un-taux-de-reussite-pour-le-bac-2018-de-99-archives-photo-le-dl-1553033229.jpg"
+                        }
+                    }
+                },
+                {
+                    "id": 1,
+                    "title": "2022",
+                    "cardTitle": "DUT in Computer Science",
+                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "cardSubtitle": "Obtained my DUT in Computer Science at the Arles campus",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MyADu1DS_AGyYwQVjRVDRAw4tGtDKemnTF1F_UGJCw&s"
+                        }
+                    }
+                },
+                {
+                    "id": 2,
+                    "title": "2022-2023",
+                    "cardTitle": "Application Designer and Developer",
+                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "cardSubtitle": "Obtained my title of Application Designer and Developer through apprenticeship (ESIMED|GLANUM)",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://cfa-insta.fr/wp-content/uploads/2021/01/3-Devops-desktop-2021-V1.jpg"
+                        }
+                    }
+                },
+                {
+                    "id": 3,
+                    "title": "2023-2025",
+                    "cardTitle": "Software Development Expert",
+                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "cardSubtitle": "Training for Software Development Expert through apprenticeship (ESIMED|GLANUM)",
+                    "media": {
+                        "type": "IMAGE",
+                        "source": {
+                            "url": "https://guardia.school/wp-content/webp-express/webp-images/uploads/2023/03/19-5.jpg.webp"
+                        }
+                    }
                 }
-            }
-        },
-        {
-            id: 2,
-            title: "May 1942",
-            cardTitle: "Dunkirk",
-            url: "http://www.history.com",
-            cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to..",
-            cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-            media: {
-                type: "IMAGE",
-                source: {
-                    url: "https://cdn.futura-sciences.com/cdn-cgi/image/width=1024,quality=50,format=auto/sources/images/dossier/773/01-intro-773.jpg"
-                }
-            }
+            ]
         }
-    ];
+    }
+
+
+    const theme = {
+        primary: darkMode ? getComputedStyle(document.body).getPropertyValue('--color-dark-quaternary') : getComputedStyle(document.body).getPropertyValue('--color-light-tertiary'),
+        secondary: darkMode ? getComputedStyle(document.body).getPropertyValue('--color-dark-secondary') : getComputedStyle(document.body).getPropertyValue('--color-light-secondary'),
+        cardBgColor: darkMode ? getComputedStyle(document.body).getPropertyValue('--color-dark-tertiary') : getComputedStyle(document.body).getPropertyValue('--color-light-secondary'),
+        titleColor: darkMode ? getComputedStyle(document.body).getPropertyValue('--color-dark-quaternary') : getComputedStyle(document.body).getPropertyValue('--color-light-quaternary'),
+        titleColorActive: darkMode ? getComputedStyle(document.body).getPropertyValue('--color-dark-quaternary') : getComputedStyle(document.body).getPropertyValue('--color-light-quaternary'),
+    };
+
+    const classNames = {
+        cardSubTitle: darkMode ? 'my-card-subtitle-dark' : 'my-card-subtitle-light',
+        cardText: darkMode ? 'my-card-text-dark' : 'my-card-text-light',
+        cardTitle: darkMode ? 'my-card-title-dark' : 'my-card-title-light',
+        title: darkMode ? 'my-title-dark' : 'my-title-light',
+    };
 
     return (
         <div className="container px-4 md:px-6">
@@ -55,37 +143,23 @@ const Timeline = () => {
                     <h2 className={`text-3xl font-bold tracking-tighter sm:text-5xl mb-8
                         text-lightQuaternary
                         dark:text-darkQuaternary`}
-                    >Expériences</h2>
+                    >{params[language].timeline}</h2>
                     <div className="grid grid-cols-1 content-center">
-                        <Chrono items={items}
-                            // mode="HORIZONTAL"
-                                mode="VERTICAL_ALTERNATING"
-                            // textOverlay
-                                disableToolbar
-                                activeItemIndex={0}
-                                allowDynamicUpdate={true}
-                            // slideShow
-                            // slideItemDuration={4500}
-                            // slideShowType="reveal"
-                                buttonTexts={{
-                                    first: 'Jump to First',
-                                    last: 'Jump to Last',
-                                    next: 'Next',
-                                    previous: 'Previous',
-                                }}
-                                theme={{
-                                        primary: 'black',
-                                        secondary: 'white',
-                                        cardBgColor: 'white',
-                                        titleColor: 'black',
-                                        titleColorActive: 'black',
-                                }}
-                        >
-                            {/*<div className="chrono-icons">*/}
-                            {/*    <img src="https://cdn.futura-sciences.com/cdn-cgi/image/width=1024,quality=50,format=auto/sources/images/dossier/773/01-intro-773.jpg" alt="image1" />*/}
-                            {/*    <img src="https://cdn.futura-sciences.com/cdn-cgi/image/width=1024,quality=50,format=auto/sources/images/dossier/773/01-intro-773.jpg" alt="image2" />*/}
-                            {/*  </div>*/}
-                        </Chrono>
+                        <Chrono items={params[language].items}
+                            key={darkMode+language}
+                            mode="VERTICAL_ALTERNATING"
+                            disableToolbar
+                            activeItemIndex={0}
+                            allowDynamicUpdate={true}
+                            buttonTexts={{
+                                first: 'Jump to First',
+                                last: 'Jump to Last',
+                                next: 'Next',
+                                previous: 'Previous',
+                            }}
+                            theme={theme}
+                            classNames={classNames}
+                        />
                     </div>
                 </div>
             </div>

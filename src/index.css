@@ -7,6 +7,7 @@
     --color-dark-secondary: #2d3748;
     --color-dark-tertiary: #064663;
     --color-dark-quaternary: #ecb365;
+
     --color-light-primary: #ffffff;
     --color-light-secondary: #F3F4F6;
     --color-light-tertiary: #6B7280;
@@ -21,14 +22,7 @@ body.dark {
     background-color: var(--color-dark-primary);
 }
 
-.project-item {
-    transition: transform 0.3s ease-in-out;
-}
-
-.project-item:hover {
-    transform: scale(1.1);
-}
-
+/* ScrollBar CSS */
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -61,6 +55,7 @@ html.dark ::-webkit-scrollbar-track {
     background-color: var(--color-dark-secondary);
 }
 
+/*Caroussel CSS*/
 .slick-prev:before, .slick-next:before {
     color: var(--color-dark-secondary) !important;
 }
@@ -71,4 +66,132 @@ html.dark ::-webkit-scrollbar-track {
 
 .gJAGSz.active {
     background: transparent !important;
+}
+
+.project-item {
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-item:hover {
+    transform: scale(1.1);
+}
+
+/* TimeLine CSS */
+.my-title-light {
+    color: var(--color-light-quaternary) !important;
+}
+
+.my-title-dark {
+    color: var(--color-dark-quaternary) !important;
+}
+
+.my-card-subtitle-dark{
+    color: var(--color-dark-quaternary) !important;
+}
+
+.my-card-title-dark{
+    color: var(--color-dark-quaternary) !important;
+}
+
+.my-card-text-dark{
+    color: var(--color-dark-quaternary) !important;
+}
+
+.my-card-subtitle-light{
+    color: var(--color-light-quaternary) !important;
+}
+
+.my-card-title-light{
+    color: var(--color-light-quaternary) !important;
+}
+
+.my-card-text-light{
+    color: var(--color-light-quaternary) !important;
+}
+
+.MediaWrapper-sc-1yk7mm5-0.keecDZ.card-media-wrapper.rc-card-media {
+    background-color: transparent;
+}
+
+.CardTitle-sc-d7qjm1-3.bOgLCv {
+    color: var(--color-light-quaternary) !important;
+}
+
+.CardTitle-sc-d7qjm1-3.jdYFtS {
+    color: var(--color-dark-quaternary) !important;
+}
+
+/* Transition CSS */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 3s ease-out forwards;
+}
+
+/* Transition CSS Skills */
+
+/* Animation de glissement avec fondu */
+@keyframes slide-in {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation d'apparition progressive */
+@keyframes staggered-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Classes utilitaires pour appliquer les animations */
+.animate-slide-in {
+    animation: slide-in 0.7s ease-in-out;
+}
+
+.animate-staggered-fade-in {
+    animation: staggered-fade-in 0.7s ease-in-out;
+}
+
+.animate-staggered {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.animate-staggered > * {
+    opacity: 0;
+    animation: staggered-fade-in 0.7s ease-in-out;
+}
+
+.animate-staggered > *:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.animate-staggered > *:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.animate-staggered > *:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.animate-staggered > *:nth-child(4) {
+    animation-delay: 0.4s;
 }

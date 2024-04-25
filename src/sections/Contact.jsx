@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const Contact = () => {
+const Contact = ({language}) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -15,6 +15,38 @@ const Contact = () => {
         console.log(formData);
     }
 
+    const params = {
+        "fr": {
+            "title": "Contact",
+            "form": {
+                "nameLabel": "Nom :",
+                "emailLabel": "E-mail :",
+                "messageLabel": "Message :",
+                "submitButton": "Envoyer",
+                "placeholders": {
+                    "name": "Entrez votre nom",
+                    "email": "Entrez votre e-mail",
+                    "message": "Entrez votre message"
+                }
+            }
+        },
+        "en": {
+            "title": "Contact",
+            "form": {
+                "nameLabel": "Name:",
+                "emailLabel": "Email:",
+                "messageLabel": "Message:",
+                "submitButton": "Send",
+                "placeholders": {
+                    "name": "Enter your name",
+                    "email": "Enter your email",
+                    "message": "Enter your message"
+                }
+            }
+        }
+    }
+
+
     return (
         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
@@ -23,7 +55,7 @@ const Contact = () => {
                         dark:text-darkQuaternary
                         text-lightQuaternary`}
                     >
-                        Contact
+                        {params[language].title}
                     </h2>
                     <form className="w-full max-w-md mx-auto space-y-4 p-4 border-2 rounded-md" onSubmit={handleSubmit}>
                         <div className="flex flex-wrap -mx-3">
@@ -32,11 +64,12 @@ const Contact = () => {
                                     dark:text-darkQuaternary
                                     text-lightQuaternary`}
                                 >
-                                    Nom :
+                                    {params[language].form.nameLabel}
                                 </label>
                                 <input
                                     type="text"
                                     id="name"
+                                    placeholder={params[language].form.placeholders.name}
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
@@ -54,6 +87,7 @@ const Contact = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    placeholder={params[language].form.placeholders.email}
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
@@ -67,11 +101,12 @@ const Contact = () => {
                                 text-lightQuaternary
                                 dark:text-darkQuaternary`}
                             >
-                                Message :
+                                {params[language].form.messageLabel}
                             </label>
                             <textarea
                                 id="message"
                                 name="message"
+                                placeholder={params[language].form.placeholders.message}
                                 value={formData.message}
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 mt-2 border rounded-md dark:bg-darkTertiary"
@@ -89,7 +124,7 @@ const Contact = () => {
                                         dark:text-darkQuaternary
                                         dark:bg-darkTertiary
                                         dark:border dark:border-darkQuaternary`}>
-                                Envoyer
+                                {params[language].form.submitButton}
                             </button>
                         </div>
                     </form>
