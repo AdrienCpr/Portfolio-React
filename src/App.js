@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './templates/Header';
@@ -23,6 +23,39 @@ function App() {
         return storedDarkMode ? JSON.parse(storedDarkMode) : false;
     });
 
+    const [colors, setColors] = useState({
+        dark:{
+            darkPrimary: "#1a202c",
+            darkSecondary: "#2d3748",
+            darkTertiary: "#064663",
+            darkQuaternary:"#ecb365",
+        },
+        light:{
+            lightPrimary: "#ffffff",
+            lightSecondary: "#F3F4F6",
+            lightTertiary: "#6B7280",
+            lightQuaternary:"#000000"
+        },
+        navbar:{
+            darkNavBar: [6, 70, 99],
+            lightNavBar: [143, 144, 146],
+        }
+    });
+
+    function toKebabCase(str) {
+        return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    }
+
+    useEffect(() => {
+        for (const color in colors.dark) {
+            console.log(`--color-${color}`, toKebabCase(colors.dark[color]))
+            document.documentElement.style.setProperty(`--color-${ toKebabCase(color)}`,colors.dark[color]);
+        }
+        for (const color in colors.light) {
+            document.documentElement.style.setProperty(`--color-${toKebabCase(color)}`, colors.light[color]);
+        }
+    }, [colors]);
+
     return (
         <Router>
             <div
@@ -33,6 +66,8 @@ function App() {
                     setLanguage={setLanguage}
                     darkMode={darkMode}
                     setDarkMode={setDarkMode}
+                    colors={colors}
+                    setColors={setColors}
                 />
 
                 <main className="flex-1 mx-auto overflow-hidden">
@@ -47,7 +82,7 @@ function App() {
 
                                     <section
                                         id="skills"
-                                        className={`w-full py-12 md:py-24 lg:py-32 bg-lightSecondary dark:bg-darkSecondary`}
+                                        className={` w-full py-12 md:py-24 lg:py-32 bg-lightSecondary dark:bg-darkSecondary`}
                                     >
                                         <Skills language={language} />
                                     </section>

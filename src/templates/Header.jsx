@@ -4,8 +4,9 @@ import {Link as ScrollLink} from 'react-scroll';
 import DarkMode from "../components/DarkMode";
 import DropDownLanguage from "../components/DropDownLanguage";
 import {useLocation, useNavigate} from "react-router-dom";
+import ColorPicker from "../components/ColorPicker";
 
-const Header = ({language, setLanguage, darkMode, setDarkMode}) => {
+const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors}) => {
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const location = useLocation();
@@ -17,9 +18,10 @@ const Header = ({language, setLanguage, darkMode, setDarkMode}) => {
             {
                 darkNavBar: [6, 70, 99],
                 lightNavBar: [143, 144, 146]
+
             },
         fr: {
-            login: "Connection",
+            login: "Connexion",
             home : "Accueil",
             about: "À propos",
             skills: "Compétences",
@@ -167,6 +169,12 @@ const Header = ({language, setLanguage, darkMode, setDarkMode}) => {
 
             {/* Menu PC */}
             <nav className="ml-auto flex gap-4 sm:gap-6 hidden lg:flex">
+                <ColorPicker
+                    darkMode={darkMode}
+                    colors={colors}
+                    setColors={setColors}
+                />
+
                 {currentPath !== "/" ?
                     <>
                         <button onClick={()=>{navigate("/")}}
