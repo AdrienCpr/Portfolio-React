@@ -6,7 +6,7 @@ import ModalDelete from "../components/ModalDelete";
 
 const Blog = () => {
     const [posts, setPosts] = useState([]);
-    const [comments] = useState({});
+    const [comments, setComments] = useState({});
     const [openComments, setOpenComments] = useState({});
     const [deletePost, setDeletePost] = useState(null);
     const [editPost, setEditPost] = useState(null);
@@ -26,11 +26,27 @@ const Blog = () => {
             .catch((error) => console.error(error));
     }, []);
 
+    async function fetchCommentPerPost(idPost){
+        fetch(`https://dummyjson.com/posts/${idPost}/comments`, {
+            method: "GET",
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setComments((prevComments) => ({
+                    ...prevComments,
+                    [idPost]: data.comments,
+                }));
+            })
+            .catch((error) => console.error(error));
+    }
+
     const toggleComments = (postId) => {
         setOpenComments((prev) => ({
             ...prev,
             [postId]: !prev[postId],
         }));
+
+        fetchCommentPerPost(postId)
     };
 
     const openEditModal = (post) => {

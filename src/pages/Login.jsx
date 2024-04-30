@@ -12,7 +12,6 @@ const Login = () => {
     const params = {
         "en": {
             "title": "Login",
-            "description": "Enter your username and password below to log in to your account.",
             "usernameLabel": "Username",
             "passwordLabel": "Password",
             "loginButton": "Login",
@@ -24,7 +23,6 @@ const Login = () => {
         },
         "fr": {
             "title": "Connexion",
-            "description": "Entrez votre nom d'utilisateur et votre mot de passe ci-dessous pour vous connecter à votre compte.",
             "usernameLabel": "Nom d'utilisateur",
             "passwordLabel": "Mot de passe",
             "loginButton": "Connexion",
@@ -70,13 +68,10 @@ const Login = () => {
         <div className="container mt-16 px-4 md:px-6">
             <div className="flex flex-col items-center text-center space-y-4">
                 <div className="w-full max-w-md p-6 rounded-lg shadow-md bg-white dark:bg-darkTertiary">
-                    <div className="mb-4 space-y-2">
+                    <div className="mb-4 space-y-2 w-96">
                         <h2 className="text-3xl font-semibold text-gray-800 dark:text-darkQuaternary">
                             {params[language].title}
                         </h2>
-                        <p className="text-gray-600 dark:text-gray-400">
-                            {params[language].description}
-                        </p>
                     </div>
 
                     {errorMessage && (

@@ -9,6 +9,7 @@ module.exports = {
         darkSecondary: 'var(--color-dark-secondary)',
         darkTertiary: 'var(--color-dark-tertiary)',
         darkQuaternary: 'var(--color-dark-quaternary)',
+
         lightPrimary: 'var(--color-light-primary)',
         lightSecondary: 'var(--color-light-secondary)',
         lightTertiary: 'var(--color-light-tertiary)',

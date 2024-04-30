@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
+
+import emailjs from '@emailjs/browser';
 
 const Contact = ({language}) => {
+    const [captchaToken, setCaptchaToken] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -11,8 +15,25 @@ const Contact = ({language}) => {
         setFormData({...formData, [name]: value});
     };
 
+    const handleCaptcha = (token) => {
+        setCaptchaToken(token);
+    };
+
     function handleSubmit (){
-        console.log(formData);
+        if (captchaToken){
+            emailjs
+                .send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, formData, process.env.REACT_APP_PUBLIC_KEY)
+                .then(
+                    () => {
+                        console.log('SUCCESS!');
+                    },
+                    (error) => {
+                        console.log('FAILED...', error.text);
+                    },
+                );
+        } else {
+            console.log('Please pass the captcha test first.');
+        }
     }
 
     const params = {
@@ -112,6 +133,9 @@ const Contact = ({language}) => {
                                 className="w-full px-4 py-2 mt-2 border rounded-md dark:bg-darkTertiary"
                                 required
                             ></textarea>
+                        </div>
+                        <div>
+                            <GoogleReCaptcha onVerify={handleCaptcha} />
                         </div>
                         <div>
                             <button type="submit"

@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import {FiX, FiMenu} from "react-icons/fi";
+import {FiX, FiMenu, FiUser } from "react-icons/fi";
 import {Link as ScrollLink} from 'react-scroll';
 import DarkMode from "../components/DarkMode";
 import DropDownLanguage from "../components/DropDownLanguage";
@@ -14,12 +14,6 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
     const currentPath = location.pathname;
 
     const params = {
-        colors :
-            {
-                darkNavBar: [6, 70, 99],
-                lightNavBar: [143, 144, 146]
-
-            },
         fr: {
             login: "Connexion",
             home : "Accueil",
@@ -64,8 +58,8 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
     }
 
     let backgroundColor = darkMode
-        ? `rgba(${rgbToString(params.colors.darkNavBar)}, ${headerTransparency})`
-        : `rgba(${rgbToString(params.colors.lightNavBar)}, ${headerTransparency})`;
+        ? `rgba(${rgbToString(colors.navbar.dark)}, ${headerTransparency})`
+        : `rgba(${rgbToString(colors.navbar.light)}, ${headerTransparency})`;
 
     return (
         <header className={`px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50
@@ -168,12 +162,25 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
             </nav>
 
             {/* Menu PC */}
-            <nav className="ml-auto flex gap-4 sm:gap-6 hidden lg:flex">
+            <div className="flex items-center gap-4">
+                {currentPath !== "/login" && (
+                    <button
+                        onClick={() => navigate("/login")}
+                        className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                    >
+                        <FiUser />
+                    </button>
+                )}
                 <ColorPicker
                     darkMode={darkMode}
                     colors={colors}
                     setColors={setColors}
+                    language={language}
                 />
+            </div>
+
+            <nav className="ml-auto flex gap-4 sm:gap-6 hidden lg:flex">
+
 
                 {currentPath !== "/" ?
                     <>
@@ -187,13 +194,6 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
                     </>
                     :
                     <>
-                        <button onClick={()=>{navigate("/login")}}
-                                className="text-sm font-medium hover:underline underline-offset-4
-                                cursor-pointer
-                                text-lightQuaternary
-                                dark:text-darkQuaternary">
-                            {params[language].login}
-                        </button>
                         <ScrollLink to="about" smooth={true} duration={500} spy={true} exact="true" offset={-70}
                                     className="text-sm font-medium hover:underline underline-offset-4
                                 cursor-pointer
