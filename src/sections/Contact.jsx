@@ -19,22 +19,34 @@ const Contact = ({language}) => {
         setCaptchaToken(token);
     };
 
-    function handleSubmit (){
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         if (captchaToken){
-            emailjs
-                .send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, formData, process.env.REACT_APP_PUBLIC_KEY)
-                .then(
-                    () => {
-                        console.log('SUCCESS!');
-                    },
-                    (error) => {
-                        console.log('FAILED...', error.text);
-                    },
-                );
+            const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.REACT_APP_RECAPTCHA_SECRET_KEY}&response=${captchaToken}`, {
+                method: 'POST',
+            });
+            const data = await response.json();
+            console.log(data)
+            if (data.success) {
+                emailjs
+                    .send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, formData, process.env.REACT_APP_PUBLIC_KEY)
+                    .then(
+                        () => {
+                            console.log('SUCCESS!');
+                        },
+                        (error) => {
+                            console.log('FAILED...', error.text);
+                        },
+                    );
+            } else {
+                console.log('Captcha validation failed.');
+            }
         } else {
             console.log('Please pass the captcha test first.');
         }
     }
+
 
     const params = {
         "fr": {
@@ -78,7 +90,7 @@ const Contact = ({language}) => {
                     >
                         {params[language].title}
                     </h2>
-                    <form className="w-full max-w-md mx-auto space-y-4 p-4 border-2 rounded-md" onSubmit={handleSubmit}>
+                    <form className="w-full max-w-md mx-auto space-y-4 p-4 border-2 rounded-md">
                         <div className="flex flex-wrap -mx-3">
                             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label htmlFor="name" className={`block
@@ -138,7 +150,7 @@ const Contact = ({language}) => {
                             <GoogleReCaptcha onVerify={handleCaptcha} />
                         </div>
                         <div>
-                            <button type="submit"
+                            <button onClick={(e) => handleSubmit(e)}
                                     className={`px-4 py-2 font-semibold rounded-md
                                         hover:bg-lightTertiary
                                         text-lightQuaternary
