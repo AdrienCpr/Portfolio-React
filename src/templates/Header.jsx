@@ -112,15 +112,6 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                     {currentPath === "/portfolio" || currentPath === "/portfolio/"  ?
                         (
                             <>
-                                <button
-                                    onClick={() => {
-                                        navigate("/portfolio/login");
-                                    }}
-                                    className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
-                                >
-                                    {params[language].login}
-                                </button>
-
                                 <ScrollLink
                                     to="about"
                                     smooth={true}

@@ -109,7 +109,7 @@ const Skills = ({language}) => {
                             (skill.primary) ?
                                 <div key={index} className="group flex flex-col items-center">
                                     {skill.icon}
-                                    <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity
+                                    <p className="=text-sm opacity-0 group-hover:opacity-100 transition-opacity
                                               text-lightQuaternary
                                               dark:text-darkQuaternary"
                                     >

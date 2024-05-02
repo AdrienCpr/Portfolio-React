@@ -64,6 +64,16 @@ html.dark ::-webkit-scrollbar-track {
     color: var(--color-dark-quaternary) !important;
 }
 
+.slick-prev{
+    z-index: 1;
+    left: 25px !important;
+}
+
+.slick-next{
+    z-index: 1;
+    right: 25px !important;
+}
+
 .gJAGSz.active {
     background: transparent !important;
 }
@@ -117,8 +127,12 @@ html.dark ::-webkit-scrollbar-track {
     color: var(--color-light-quaternary) !important;
 }
 
-.CardTitle-sc-d7qjm1-3.jdYFtS {
+.dark .CardTitle-sc-d7qjm1-3 {
     color: var(--color-dark-quaternary) !important;
+}
+
+.CardTitle-sc-d7qjm1-3 {
+    color: var(--color-light-quaternary) !important;
 }
 
 /* Transition CSS */
@@ -194,4 +208,27 @@ html.dark ::-webkit-scrollbar-track {
 
 .animate-staggered > *:nth-child(4) {
     animation-delay: 0.4s;
+}
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid currentColor;
+    animation: typing 2s steps(20), blink 0.5s step-end infinite alternate;
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink {
+        50% {
+            border-color: transparent;
+        }
+    }
 }

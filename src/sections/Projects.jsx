@@ -86,7 +86,7 @@ const Projects = ({language}) => {
                     "id": 1,
                     "title": "This Portfolio",
                     "image": "https://media.licdn.com/dms/image/D4E03AQHo1L5sCkyS6g/profile-displayphoto-shrink_800_800/0/1694500103211?e=2147483647&v=beta&t=jkkRFeMdEg1wNU0TB_zzrxPa0KpohzTGsBIo2AJeR8I",
-                    "link": "/",
+                    "link": "/portfolio",
                     "description": "Created with React and Tailwind"
                 },
                 {

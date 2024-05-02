@@ -65,10 +65,10 @@ const Login = () => {
     };
 
     return (
-        <div className="container mt-16 px-4 md:px-6">
+        <div className="container mx-auto mt-16 px-4 md:px-6">
             <div className="flex flex-col items-center text-center space-y-4">
                 <div className="w-full max-w-md p-6 rounded-lg shadow-md bg-white dark:bg-darkTertiary">
-                    <div className="mb-4 space-y-2 w-96">
+                    <div className="mb-4 space-y-2 w-full">
                         <h2 className="text-3xl font-semibold text-gray-800 dark:text-darkQuaternary">
                             {params[language].title}
                         </h2>
@@ -109,7 +109,7 @@ const Login = () => {
                                 <input
                                     type="password"
                                     id="password"
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md dark:border-gray-600 dark:bg-darkSecondary dark:text-darkQuaternary"
+                                    className="w-full px-4 py-2 border rounded-md border-gray-300 dark:border-gray-600 dark:bg-darkSecondary dark:text-darkQuaternary"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
@@ -119,7 +119,7 @@ const Login = () => {
                         <div className="flex mt-6 justify-center">
                             <button
                                 type="submit"
-                                className={`px-4 py-2 font-semibold rounded-md hover:bg-lightTertiary text-lightQuaternary bg-lightPrimary border border-lightQuaternary dark:hover:bg-darkPrimary dark:text-darkQuaternary dark:bg-darkTertiary dark:border-darkQuaternary`}
+                                className="px-4 py-2 font-semibold rounded-md hover:bg-lightTertiary text-lightQuaternary bg-lightPrimary border border-lightQuaternary dark:hover:bg-darkPrimary dark:text-darkQuaternary dark:bg-darkTertiary dark:border-darkQuaternary"
                             >
                                 {params[language].loginButton}
                             </button>

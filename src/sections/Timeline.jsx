@@ -37,7 +37,7 @@ const Timeline = ({darkMode, language}) => {
                     "id": 2,
                     "title": "2022-2023",
                     "cardTitle": "Concepteur et développeur d'applications",
-                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "url": "https://esimed.fr/",
                     "cardSubtitle": "Obtention de mon titre de Concepteur et développeur d'applications en alternance (ESIMED|GLANUM)",
                     "media": {
                         "type": "IMAGE",
@@ -50,7 +50,7 @@ const Timeline = ({darkMode, language}) => {
                     "id": 3,
                     "title": "2023-2025",
                     "cardTitle": "Expert en développement logiciel",
-                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "url": "https://esimed.fr/",
                     "cardSubtitle": "Formation d'Expert en développement logiciel en alternance (ESIMED|GLANUM)",
                     "media": {
                         "type": "IMAGE",
@@ -94,7 +94,7 @@ const Timeline = ({darkMode, language}) => {
                     "id": 2,
                     "title": "2022-2023",
                     "cardTitle": "Application Designer and Developer",
-                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "url": "https://esimed.fr/",
                     "cardSubtitle": "Obtained my title of Application Designer and Developer through apprenticeship (ESIMED|GLANUM)",
                     "media": {
                         "type": "IMAGE",
@@ -107,7 +107,7 @@ const Timeline = ({darkMode, language}) => {
                     "id": 3,
                     "title": "2023-2025",
                     "cardTitle": "Software Development Expert",
-                    "url": "https://iut.univ-amu.fr/fr/sites-geographiques/arles",
+                    "url": "https://esimed.fr/",
                     "cardSubtitle": "Training for Software Development Expert through apprenticeship (ESIMED|GLANUM)",
                     "media": {
                         "type": "IMAGE",
