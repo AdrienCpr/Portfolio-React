@@ -34,7 +34,7 @@ const About = ({ language }) => {
                     <img
                         alt={params[language].title}
                         className="rounded-full object-cover object-center fade-in"
-                        src="/adrien.jpg"
+                        src="/portfolio/adrien.jpg"
                         loading="lazy"
                         style={{ height: "500px", width: "500px" }}
                     />
