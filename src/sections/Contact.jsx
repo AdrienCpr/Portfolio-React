@@ -1,34 +1,25 @@
 import React, {useState} from 'react';
-import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import emailjs from '@emailjs/browser';
 
 const Contact = ({language}) => {
-    const [captchaToken, setCaptchaToken] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        recaptcha: ''
     });
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormData({...formData, [name]: value});
     };
 
-    const handleCaptcha = (token) => {
-        setCaptchaToken(token);
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (captchaToken){
-            const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.REACT_APP_RECAPTCHA_SECRET_KEY}&response=${captchaToken}`, {
-                method: 'POST',
-            });
-            const data = await response.json();
-            console.log(data)
-            if (data.success) {
+        console.log(e)
+        if (formData.recaptcha === "portfolio")
+        {
+            try {
                 emailjs
                     .send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, formData, process.env.REACT_APP_PUBLIC_KEY)
                     .then(
@@ -39,12 +30,19 @@ const Contact = ({language}) => {
                             console.log('FAILED...', error.text);
                         },
                     );
-            } else {
-                console.log('Captcha validation failed.');
+
+                formData.message = ""
+                formData.name = ""
+                formData.email = ""
+                formData.recaptcha = ""
+            } catch (e) {
+                console.log(e)
             }
         } else {
-            console.log('Please pass the captcha test first.');
+            console.log("recaptcha incorrect")
+            formData.recaptcha = ""
         }
+
     }
 
 
@@ -59,7 +57,8 @@ const Contact = ({language}) => {
                 "placeholders": {
                     "name": "Entrez votre nom",
                     "email": "Entrez votre e-mail",
-                    "message": "Entrez votre message"
+                    "message": "Entrez votre message",
+                    "recaptcha": "Ecrivez 'portfolio' ici"
                 }
             }
         },
@@ -73,7 +72,8 @@ const Contact = ({language}) => {
                 "placeholders": {
                     "name": "Enter your name",
                     "email": "Enter your email",
-                    "message": "Enter your message"
+                    "message": "Enter your message",
+                    "recaptcha": "Enter 'portfolio' here"
                 }
             }
         }
@@ -146,8 +146,23 @@ const Contact = ({language}) => {
                                 required
                             ></textarea>
                         </div>
-                        <div>
-                            <GoogleReCaptcha onVerify={handleCaptcha} />
+                        <div className="w-full px-3 mb-6 md:mb-0">
+                            <label htmlFor="name" className={`block
+                                    dark:text-darkQuaternary
+                                    text-lightQuaternary`}
+                            >
+                                Recaptcha
+                            </label>
+                            <input
+                                type="text"
+                                id="recaptcha"
+                                placeholder={params[language].form.placeholders.recaptcha}
+                                name="recaptcha"
+                                value={formData.recaptcha}
+                                onChange={handleChange}
+                                className="w-full px-4 py-2 mt-2 border rounded-md dark:bg-darkTertiary"
+                                required
+                            />
                         </div>
                         <div>
                             <button onClick={(e) => handleSubmit(e)}

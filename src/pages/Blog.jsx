@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { FaComment, FaChevronDown, FaChevronUp, FaHeart, FaEdit, FaTrash } from 'react-icons/fa';
+import {FaComment, FaChevronDown, FaChevronUp, FaHeart, FaEdit, FaTrash, FaPlus} from 'react-icons/fa';
 import Modal from 'react-modal';
 import ModalEdit from "../components/ModalEdit";
 import ModalDelete from "../components/ModalDelete";
+import ModalCreate from "../components/ModalCreate";
 
 const Blog = () => {
     const [posts, setPosts] = useState([]);
@@ -11,7 +12,10 @@ const Blog = () => {
     const [deletePost, setDeletePost] = useState(null);
     const [editPost, setEditPost] = useState(null);
     const [editedPost, setEditedPost] = useState({});
+    const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
     const language = localStorage.getItem("language")
+
 
     Modal.setAppElement('#root');
 
@@ -74,6 +78,14 @@ const Blog = () => {
     const closeDeleteModal = () => {
         setDeletePost(null);
     };
+
+    const openCreateModal = () => {
+        setCreateModalOpen(true);
+    };
+
+    const closeCreateModal = () => {
+        setCreateModalOpen(false);
+    };
     const saveEditPost = () => {
         const updatedPosts = posts.map((post) => {
             if (post.id === editPost.id) {
@@ -92,8 +104,23 @@ const Blog = () => {
         closeDeleteModal();
     };
 
+    const createNewPost = (newPost) => {
+        const id = Math.max(...posts.map((p) => p.id)) + 1;
+        const post = { ...newPost, id };
+        setPosts([post, ...posts]);
+        closeCreateModal();
+    };
+
     return (
         <div className="container px-4 md:px-6">
+            <div className="flex justify-end mb-4">
+                <button
+                    className="hover:text-gray-900 dark:text-darkQuaternary px-4 py-2 rounded-md flex items-center"
+                    onClick={openCreateModal}
+                >
+                    <FaPlus />
+                </button>
+            </div>
             <div className="flex flex-col items-center space-y-4 fade-in">
                 <div className="px-4 py-6 md:px-6 lg:py-16 md:py-12">
                     <div className="space-y-8">
@@ -193,6 +220,13 @@ const Blog = () => {
                 language={language}
             />
 
+            <ModalCreate
+                isCreateModalOpen={isCreateModalOpen}
+                closeCreateModal={closeCreateModal}
+                createNewPost={createNewPost}
+                setPosts={setPosts}
+                language={language}
+            />
         </div>
     );
 };

@@ -11,7 +11,6 @@ import Footer from './templates/Footer';
 import Login from './pages/Login';
 import Blog from './pages/Blog';
 import { useState } from 'react';
-import {GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
 
 function App() {
     const [language, setLanguage] = useState(() => {
@@ -43,7 +42,7 @@ function App() {
         },
         navbar:{
             dark: [6, 70, 99],
-            light: [143, 144, 146],
+            light: [233,234,236],
         }
     });
 
@@ -61,64 +60,62 @@ function App() {
     }, [colors]);
 
     return (
-        <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_RECAPTCHA_KEY}>
-            <Router>
-                <div
-                    className={`flex flex-col min-h-screen bg-lightPrimary dark:bg-darkPrimary transition-all duration-500`}
-                >
-                    <Header
-                        language={language}
-                        setLanguage={setLanguage}
-                        darkMode={darkMode}
-                        setDarkMode={setDarkMode}
-                        colors={colors}
-                        setColors={setColors}
-                    />
+        <Router>
+            <div
+                className={`flex flex-col min-h-screen bg-lightPrimary dark:bg-darkPrimary transition-all duration-500`}
+            >
+                <Header
+                    language={language}
+                    setLanguage={setLanguage}
+                    darkMode={darkMode}
+                    setDarkMode={setDarkMode}
+                    colors={colors}
+                    setColors={setColors}
+                />
 
-                    <main className="flex-1 mx-auto overflow-hidden">
-                        <Routes>
-                            <Route
-                                path="/"
-                                element={
-                                    <>
-                                        <section id="about" className="w-full py-10">
-                                            <About language={language} />
-                                        </section>
+                <main className="flex-1 mx-auto overflow-hidden">
+                    <Routes>
+                        <Route
+                            path="/portfolio"
+                            element={
+                                <>
+                                    <section id="about" className="w-full py-10">
+                                        <About language={language} />
+                                    </section>
 
-                                        <section
-                                            id="skills"
-                                            className={` w-full py-12 md:py-24 lg:py-32 bg-lightSecondary dark:bg-darkSecondary`}
-                                        >
-                                            <Skills language={language} />
-                                        </section>
+                                    <section
+                                        id="skills"
+                                        className={` w-full py-12 md:py-24 lg:py-32 bg-lightSecondary dark:bg-darkSecondary`}
+                                    >
+                                        <Skills language={language} />
+                                    </section>
 
-                                        <section id="timeline" className="w-full text-center py-4 md:py-8 lg:py-10">
-                                            <Timeline language={language} darkMode={darkMode} />
-                                        </section>
+                                    <section id="timeline" className="w-full text-center py-4 md:py-8 lg:py-10">
+                                        <Timeline language={language} darkMode={darkMode} />
+                                    </section>
 
-                                        <section
-                                            id="projects"
-                                            className={`w-full py-4 md:py-8 lg:py-10 bg-lightSecondary dark:bg-darkSecondary`}
-                                        >
-                                            <Projects language={language} />
-                                        </section>
+                                    <section
+                                        id="projects"
+                                        className={`w-full py-4 md:py-8 lg:py-10 bg-lightSecondary dark:bg-darkSecondary`}
+                                    >
+                                        <Projects language={language} />
+                                    </section>
 
-                                        <section id="contact" className="w-full text-center py-6 md:py-12 lg:py-16">
-                                            <Contact language={language} />
-                                        </section>
-                                    </>
-                                }
-                            />
+                                    <section id="contact" className="w-full text-center py-6 md:py-12 lg:py-16">
+                                        <Contact language={language} />
+                                    </section>
+                                </>
+                            }
+                        />
 
-                            <Route path="/login" element={<Login language={language}/>} />
-                            <Route path="/blog" element={<Blog language={language}/>} />
-                        </Routes>
-                    </main>
+                        <Route path="/portfolio/login" element={<Login language={language}/>} />
+                        <Route path="/portfolio/blog" element={<Blog language={language}/>} />
+                    </Routes>
+                </main>
 
-                    <Footer language={language} />
-                </div>
-            </Router>
-        </GoogleReCaptchaProvider>
+                <Footer language={language} />
+            </div>
+        </Router>
     );
 }
 

@@ -90,9 +90,9 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
                 </div>
 
                 <div className="flex flex-col gap-4 mt-12">
-                    {currentPath !== "/" ?
+                    {currentPath !== "/portfolio" ?
                         <>
-                            <button onClick={()=>{navigate("/")}}
+                            <button onClick={()=>{navigate("/portfolio")}}
                                     className="text-sm font-medium hover:underline underline-offset-4
                             cursor-pointer
                             text-lightQuaternary
@@ -102,7 +102,7 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
                         </>
                         :
                         <>
-                            <button onClick={()=>{navigate("/login")}}
+                            <button onClick={()=>{navigate("/portfolio/login")}}
                                     className="text-sm font-medium hover:underline underline-offset-4
                             cursor-pointer
                             text-lightQuaternary
@@ -145,7 +145,7 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
                         text-lightQuaternary">
                                 {params[language].contact}
                             </ScrollLink>
-                            <button onClick={()=>{navigate("/blog")}}
+                            <button onClick={()=>{navigate("/portfolio/blog")}}
                                     className="text-sm font-medium hover:underline underline-offset-4
                             cursor-pointer
                             text-lightQuaternary
@@ -163,9 +163,9 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
 
             {/* Menu PC */}
             <div className="flex items-center gap-4">
-                {currentPath !== "/login" && (
+                {currentPath !== "/portfolio/login" && (
                     <button
-                        onClick={() => navigate("/login")}
+                        onClick={() => navigate("/portfolio/login")}
                         className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
                     >
                         <FiUser />
@@ -182,9 +182,9 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
             <nav className="ml-auto flex gap-4 sm:gap-6 hidden lg:flex">
 
 
-                {currentPath !== "/" ?
+                {currentPath !== "/portfolio" ?
                     <>
-                        <button onClick={()=>{navigate("/")}}
+                        <button onClick={()=>{navigate("/portfolio")}}
                                     className="text-sm font-medium hover:underline underline-offset-4
                                 cursor-pointer
                                 text-lightQuaternary
@@ -229,7 +229,7 @@ const Header = ({language, setLanguage, darkMode, setDarkMode, colors, setColors
                                 text-lightQuaternary">
                             {params[language].contact}
                         </ScrollLink>
-                        <button onClick={()=>{navigate("/blog")}}
+                        <button onClick={()=>{navigate("/portfolio/blog")}}
                                 className="text-sm font-medium hover:underline underline-offset-4
                                 cursor-pointer
                                 text-lightQuaternary
