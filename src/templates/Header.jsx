@@ -171,15 +171,16 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                                 >
                                     {params[language].contact}
                                 </ScrollLink>
-
-                                <button
-                                    onClick={() => {
-                                        navigate("/portfolio/blog");
-                                    }}
-                                    className="cursor-pointer text-start text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
-                                >
-                                    {params[language].blog}
-                                </button>
+                                {sessionStorage.getItem("key") && (
+                                    <button
+                                        onClick={() => {
+                                            navigate("/portfolio/blog");
+                                        }}
+                                        className="cursor-pointer text-start text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                                    >
+                                        {params[language].blog}
+                                    </button>
+                                )}
                             </>
                         )
                             :
@@ -232,7 +233,7 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                                 spy
                                 exact="true"
                                 offset={-70}
-                                className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                                className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
                             >
                                 {params[language].about}
                             </ScrollLink>
@@ -244,7 +245,7 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                                 spy
                                 exact="true"
                                 offset={-70}
-                                className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                                className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
                             >
                                 {params[language].skills}
                             </ScrollLink>
@@ -256,7 +257,7 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                                 spy
                                 exact="true"
                                 offset={-70}
-                                className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                                className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
                             >
                                 {params[language].timeline}
                             </ScrollLink>
@@ -268,7 +269,7 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                                 spy
                                 exact="true"
                                 offset={-70}
-                                className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                                className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
                             >
                                 {params[language].projects}
                             </ScrollLink>
@@ -280,19 +281,20 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                                 spy
                                 exact="true"
                                 offset={-70}
-                                className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                                className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
                             >
                                 {params[language].contact}
                             </ScrollLink>
-
-                            <button
-                                onClick={() => {
-                                    navigate("/portfolio/blog");
-                                }}
-                                className="text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
-                            >
-                                {params[language].blog}
-                            </button>
+                            {sessionStorage.getItem("key") && (
+                                <button
+                                    onClick={() => {
+                                        navigate("/portfolio/blog");
+                                    }}
+                                    className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 text-lightQuaternary dark:text-darkQuaternary"
+                                >
+                                    {params[language].blog}
+                                </button>
+                            )}
                         </>
                     )
                     :
@@ -301,7 +303,7 @@ const Header = ({ language, setLanguage, darkMode, setDarkMode, colors, setColor
                             onClick={() => {
                                 navigate("/portfolio");
                             }}
-                            className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer text-lightQuaternary dark:text-darkQuaternary"
+                            className="cursor-pointer text-sm font-medium hover:underline underline-offset-4 cursor-pointer text-lightQuaternary dark:text-darkQuaternary"
                         >
                             {params[language].home}
                         </button>

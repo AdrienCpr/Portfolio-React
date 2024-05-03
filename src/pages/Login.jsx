@@ -52,7 +52,7 @@ const Login = () => {
             if (response.status === 200) {
                 const data = await response.json();
                 sessionStorage.setItem('key', data.token);
-                navigate('/blog');
+                navigate('/portfolio/blog');
             } else if (response.status === 400) {
                 setErrorMessage(params[language].error.invalidCredentials);
             } else {
