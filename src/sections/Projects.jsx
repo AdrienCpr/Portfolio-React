@@ -53,28 +53,28 @@ const Projects = ({language}) => {
                     "id": 1,
                     "title": "Ce portfolio",
                     "image": "https://media.licdn.com/dms/image/D4E03AQHo1L5sCkyS6g/profile-displayphoto-shrink_800_800/0/1694500103211?e=2147483647&v=beta&t=jkkRFeMdEg1wNU0TB_zzrxPa0KpohzTGsBIo2AJeR8I",
-                    "link": "/",
+                    "link": "https://github.com/AdrienCpr/portfolio",
                     "description": "Réalisé en React et Tailwind"
                 },
                 {
                     "id": 2,
                     "title": "Projet Bachelor",
                     "image": "https://static.fnac-static.com/multimedia/Images/FD/Comete/153036/CCP_IMG_1200x800/2022194.jpg",
-                    "link": "",
+                    "link": "https://github.com/ProjetEsimedJDC/ProjetEsimedJDC",
                     "description": "Utilisation de socket IO pour créer un jeu Pokémon avec une API NodeJS et un front JavaScript"
                 },
                 {
                     "id": 3,
                     "title": "Scraper LinkedIn",
                     "image": "https://brightdata.fr/wp-content/uploads/2021/09/Group-112045.svg",
-                    "link": "",
+                    "link": "https://github.com/AdrienCpr/scrapeLinkedin",
                     "description": "Permet, à partir de votre identifiant LinkedIn, de récupérer vos informations avec NodeJS et Puppeteer"
                 },
                 {
                     "id": 4,
                     "title": "Jeu Vidéo",
                     "image": "https://media.sketchfab.com/models/d4c2f6c5a44748ee8d32040fdd4617b0/thumbnails/1f208269136e40e1a16cb6fa9bddc979/a24860284ec2463a86333c34aac44f53.jpeg",
-                    "link": "",
+                    "link": "https://adrienc18.itch.io/my-first-platformer-3d",
                     "description": "Création d'un platformer 3D avec Godot"
                 }
             ]
@@ -86,28 +86,28 @@ const Projects = ({language}) => {
                     "id": 1,
                     "title": "This Portfolio",
                     "image": "https://media.licdn.com/dms/image/D4E03AQHo1L5sCkyS6g/profile-displayphoto-shrink_800_800/0/1694500103211?e=2147483647&v=beta&t=jkkRFeMdEg1wNU0TB_zzrxPa0KpohzTGsBIo2AJeR8I",
-                    "link": "/portfolio",
+                    "link": "https://github.com/AdrienCpr/portfolio",
                     "description": "Created with React and Tailwind"
                 },
                 {
                     "id": 2,
                     "title": "Bachelor's Project",
                     "image": "https://static.fnac-static.com/multimedia/Images/FD/Comete/153036/CCP_IMG_1200x800/2022194.jpg",
-                    "link": "",
+                    "link": "https://github.com/ProjetEsimedJDC/ProjetEsimedJDC",
                     "description": "Using socket IO to create a Pokémon game with a NodeJS API and a JavaScript frontend"
                 },
                 {
                     "id": 3,
                     "title": "LinkedIn Scraper",
                     "image": "https://brightdata.fr/wp-content/uploads/2021/09/Group-112045.svg",
-                    "link": "",
+                    "link": "https://github.com/AdrienCpr/scrapeLinkedin",
                     "description": "Allows you, using your LinkedIn ID, to retrieve your information with NodeJS and Puppeteer"
                 },
                 {
                     "id": 4,
                     "title": "Video Game",
                     "image": "https://media.sketchfab.com/models/d4c2f6c5a44748ee8d32040fdd4617b0/thumbnails/1f208269136e40e1a16cb6fa9bddc979/a24860284ec2463a86333c34aac44f53.jpeg",
-                    "link": "",
+                    "link": "https://adrienc18.itch.io/my-first-platformer-3d",
                     "description": "Creating a 3D platformer with Godot"
                 }
             ]
